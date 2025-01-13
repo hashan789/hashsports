@@ -158,9 +158,9 @@ export const refreshToken = async (req, res) => {
 
 export const getProfile = async (req, res) => {
     try{
-        const user = await User.findById(req.user.userId).select("-password");
+        // const user = await User.findById(req.user.userId).select("-password");
 
-        res.json(user);
+        res.json(req.user);
     }
     catch (error) {
         res.status(500).json({ message: "Internal server error" , error : error.message });
