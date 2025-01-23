@@ -21,7 +21,7 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="container mx-auto flex justify-center">
+    <div className="container mx-auto flex justify-center relative top-20">
       <motion.div 
         className="w-5/12 rounded-lg border pt-8 pb-8"
         initial={{ opacity: 0, y: -20 }}
@@ -29,7 +29,7 @@ export default function LoginPage() {
         transition={{ duration: 0.8 }}
       >
       <div className="flex justify-center">
-        <label className="text-2xl mb-10">Login</label>
+        <label className="text-2xl font-semibold mb-10">Login</label>
       </div>
         <div className="flex justify-center">
           <form onSubmit={handleSubmit}>
