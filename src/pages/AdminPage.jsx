@@ -26,7 +26,7 @@ export default function AdminPage() {
         </div>
       </div>
       <div className="w-10/12 h-screen bg-slate-600 grid p-5">
-        <div className="w-full h-24 bg-blue-700 relative top-1/4 ">
+        <div className="w-full h-24created bg-blue-700 relative top-1/4 ">
           {/* <div className="w-10/12 h-full bg-blue-200"></div> */}
         </div>
         <div className="w-full h-52 bg-blue-300">
