@@ -5,10 +5,10 @@ import { useUserState } from "../stores/useUserState";
 export default function NavBar() {
 
     const { user, logout } = useUserState();
-    const isAdmin = true;
+    const isAdmin = user?.role === 'admin';
 
   return (
-    <header className='fixed font-poppins z-40 top-0 left-0 w-full h-14 transition-all duration-300 bg-blue-400 text-white'>
+    <header className='fixed font-poppins z-40 top-0 left-0 w-full h-14 transition-all duration-300 bg-black bg-opacity-25 text-white'>
         <div className="container mx-auto px-4 py-3 flex items-center justify-around">
             <div className="relative left-0 float-left">
                 <Link to={"/"} className="text-2xl font-bold space-x-2 flex">
@@ -16,41 +16,41 @@ export default function NavBar() {
                 </Link>
             </div>
             <nav className="flex flex-wrap items-center gap-6 float-right">
-                <Link to={"/"} className="text-sm font-bold space-x-2 flex">
+                <Link to={"/"} className="text-sm font-bold space-x-2 flex hover:text-blue-500 transtion duration-300">
                     Home
                 </Link>
                 {
                     user ? (
-                        <Link to={"/cart"} className="relative group text-sm font-bold space-x-2">
+                        !isAdmin && (<Link to={"/cart"} className="relative group text-sm font-bold space-x-2">
                             <span className="absolute -top-2 left-4 text-sm rounded-full px-1 py-0.5 bg-green-500 group-hover:text-blue-500 transition duration-300">3</span>
                             <ShoppingCart className="inline-block mr-3 group-hover:text-blue-500 transtion duration-300" size={20}/>
-                            <span>Cart</span>
-                        </Link>
+                            <span className='group-hover:text-blue-500 transtion duration-300'>Cart</span>
+                        </Link>)
                     ) : (
                         <>
-                            <Link to={"/cart"} className="relative group text-sm font-bold space-x-2">
+                            <Link to={"/signup"} className="relative group text-sm font-bold space-x-2">
                                 <UserPlus className="inline-block mr-1 group-hover:text-blue-500 transtion duration-300" size={20}/>
-                                <span>Sign up</span>
+                                <span className="group-hover:text-blue-500 transtion duration-300">Sign up</span>
                             </Link>
-                            <Link to={"/cart"} className="relative group text-sm font-bold space-x-2">
+                            <Link to={"/login"} className="relative group text-sm font-bold space-x-2">
                                 <LogIn className="inline-block mr-1 group-hover:text-blue-500 transtion duration-300" size={20}/>
-                                <span>Log in</span>
+                                <span className="group-hover:text-blue-500 transtion duration-300">Log in</span>
                             </Link>
                         </>
                     )
                 }
                 {
                     isAdmin && (
-                        <Link to={"/admin"} className="text-sm font-bold space-x-2 flex">
+                        <Link to={"/dashboard"} className="text-sm hover:text-blue-500 font-bold space-x-2 flex transtion duration-300">
                             Dashboard
                         </Link>
                     )
                 }
                 {
                     user && (
-                        <button className="text-sm font-bold space-x-2 flex" onClick={logout}>
+                        <button className="text-sm group font-bold space-x-2 flex" onClick={logout}>
                             <LogOut className="translate-y-1" size={18}/>
-                            <span>Logout</span>
+                            <span className="group-hover:text-blue-500 transtion duration-300">Logout</span>
                         </button>
                         
                     )
