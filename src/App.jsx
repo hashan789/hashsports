@@ -5,6 +5,7 @@ import SignupPage from "./pages/SignupPage"
 import NavBar from "./components/NavBar"
 import { useUserState } from "./stores/useUserState"
 import { useEffect } from "react"
+import AdminPage from "./pages/AdminPage"
 
 function App() {
 
@@ -16,12 +17,13 @@ function App() {
 
   return (
     <>
-      <NavBar />
-      <div className="relative top-20 font-poppins">
+      {<NavBar />}
+      <div className="relative font-poppins">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/login" element={ user ? <HomePage/> : <LoginPage />} />
+          <Route path="/dashboard" element={ user?.role === 'admin' ? <AdminPage /> : <LoginPage />} />
         </Routes>
       </div>
     </>
