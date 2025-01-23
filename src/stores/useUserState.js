@@ -45,7 +45,7 @@ export const useUserState = create((set,get) => ({
             set({user: null});
         }
         catch (error) {
-            return toast.error(error.response.data.message || 'An error occurred');
+            return toast.error(error.response?.data?.message || 'An error occurred');
         }
     },
 
