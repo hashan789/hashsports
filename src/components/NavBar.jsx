@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
 import { LogIn, LogOut, ShoppingCart, UserPlus } from 'lucide-react'
 import { useUserState } from "../stores/useUserState";
+import { useCartState } from "../stores/useCartState";
 
 export default function NavBar() {
 
     const { user, logout } = useUserState();
+    const { cart } = useCartState();
+
     const isAdmin = user?.role === 'admin';
 
   return (
@@ -20,24 +23,13 @@ export default function NavBar() {
                     Home
                 </Link>
                 {
-                    user ? (
-                        !isAdmin && (<Link to={"/cart"} className="relative group text-sm font-bold space-x-2">
-                            <span className="absolute -top-2 left-4 text-sm rounded-full px-1 py-0.5 bg-green-500 group-hover:text-blue-500 transition duration-300">3</span>
+                    user && (
+                        <Link to={"/cart"} className="relative group text-sm font-bold space-x-2">
+                            <span className="absolute -top-2 left-4 text-sm rounded-full px-1 py-0.5 bg-green-500 group-hover:text-blue-500 transition duration-300">{ cart.length }</span>
                             <ShoppingCart className="inline-block mr-3 group-hover:text-blue-500 transtion duration-300" size={20}/>
                             <span className='group-hover:text-blue-500 transtion duration-300'>Cart</span>
-                        </Link>)
-                    ) : (
-                        <>
-                            <Link to={"/signup"} className="relative group text-sm font-bold space-x-2">
-                                <UserPlus className="inline-block mr-1 group-hover:text-blue-500 transtion duration-300" size={20}/>
-                                <span className="group-hover:text-blue-500 transtion duration-300">Sign up</span>
-                            </Link>
-                            <Link to={"/login"} className="relative group text-sm font-bold space-x-2">
-                                <LogIn className="inline-block mr-1 group-hover:text-blue-500 transtion duration-300" size={20}/>
-                                <span className="group-hover:text-blue-500 transtion duration-300">Log in</span>
-                            </Link>
-                        </>
-                    )
+                        </Link>
+                    ) 
                 }
                 {
                     isAdmin && (
@@ -46,6 +38,21 @@ export default function NavBar() {
                         </Link>
                     )
                 }
+                    
+                    {
+                        !user && (
+                            <>
+                        <Link to={"/signup"} className="relative group text-sm font-bold space-x-2">
+                            <UserPlus className="inline-block mr-1 group-hover:text-blue-500 transtion duration-300" size={20}/>
+                            <span className="group-hover:text-blue-500 transtion duration-300">Sign up</span>
+                        </Link>
+                        <Link to={"/login"} className="relative group text-sm font-bold space-x-2">
+                            <LogIn className="inline-block mr-1 group-hover:text-blue-500 transtion duration-300" size={20}/>
+                            <span className="group-hover:text-blue-500 transtion duration-300">Log in</span>
+                        </Link>
+                            </>
+                        )
+                    }
                 {
                     user && (
                         <button className="text-sm group font-bold space-x-2 flex" onClick={logout}>
