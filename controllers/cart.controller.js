@@ -6,7 +6,7 @@ export const addToCart = async (req, res) => {
         const { productId } = req.body;
         const user = req.user;
 
-        const existingProduct = user.cartItems.find(product => product.productId === productId);
+        const existingProduct = user.cartItems.find((product) => product.id === productId);
 
         if (existingProduct) {
             existingProduct.quantity += 1;
@@ -45,7 +45,7 @@ export const updateQuantity = async (req, res) => {
     try {
         
         const { id : productId } = req.params;
-        const quantity = req.body;
+        const { quantity } = req.body;
         const user = req.user;
         const existingProduct = user.cartItems.find((item) => item.id === productId);
 
@@ -73,17 +73,20 @@ export const getCartProducts = async (req, res) => {
 
     try {
         const products = await Product.find({ _id: { 
-            $in : req.user.cartItems.map(item => item.productId) 
+            $in : req.user.cartItems
         } });
 
         //add quantity for each product
         const cartItems = products.map((product) => {
-            const item = req.user.cartItems.find(cartItem => cartItem.productId === product.id);
+            const item = req.user.cartItems.find(cartItem => cartItem.id === product.id);
             return {
                 ...product.toJSON(),
                 quantity: item.quantity
             }
         });
+
+        res.json(cartItems);
+
     } catch (error) {
         res.status(500).json({ message: "Internal server error", error: error.message });
     }
