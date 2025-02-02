@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useProductState } from "../stores/useProductState";
 import { useParams } from "react-router-dom";
 import { motion } from "framer-motion";
-import ProductCard from "./ProductCard";
+import ProductCard from "../components/ProductCard";
 
 export default function CategoryPage() {
 
