@@ -88,6 +88,23 @@ export const useProductState = create((set) => ({
             set({ loading: false });
             return toast.error(error.response.data.error);
         }
+    },
+
+    getFeaturedProducts: async () => {
+
+        set({ loading: true });
+
+        try {
+            const response = await axios.get("/product/featured");
+            console.log(response);
+            set({ 
+                products: response.data,
+                loading: false
+             })
+        } catch (error) {
+            set({ loading: false });
+            return toast.error(error.response.data.error);
+        }
     }
 
 
