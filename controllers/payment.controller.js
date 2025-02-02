@@ -23,11 +23,11 @@ export const createCheckoutSession = async (req,res) => {
                     currency: "usd",
                     product_data: {
                         name: product.name,
-                        image: [product.image]
+                        images: [product.image]
                     },
-                    unit_amount: amount,
-                    quantity: product.quantity
-                }
+                    unit_amount: amount
+                },
+                quantity: product.quantity || 1
             }
         });
 
@@ -128,6 +128,7 @@ export const checkoutSuccess = async (req,res) => {
 //functions
 
 async function createStripeCoupon(discountPercentage){
+
     const coupon = await stripe.coupons.create({
         percent_off: discountPercentage,
         duration: 'once'
@@ -137,6 +138,9 @@ async function createStripeCoupon(discountPercentage){
 }
 
 async function createNewCoupon(userId){
+
+    await Coupon.findByIdAndDelete({ userId });
+
     const newCoupon = new Coupon({
         code: "GIFT" + Math.random().toString(36).substring(2,8).toUpperCase(),
         discountPercentage: 10,
