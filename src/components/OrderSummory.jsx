@@ -1,14 +1,37 @@
 import { useCartState } from "../stores/useCartState";
 import { motion } from "framer-motion";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "../lib/axios";
 
 export default function OrderSummory() {
 
-    const { total, subTotal, coupon, isCouponApplied } = useCartState();
+    const { total, subTotal, coupon, isCouponApplied, cart } = useCartState();
+
+    const stripePromise = loadStripe(process.env.STRIPE_PUBLISH_KEY);
 
     const savings = subTotal - total;
     const fixedTotal = total.toFixed(2);
     const fixedSubTotal = subTotal.toFixed(2);
     const fixedSavings = savings.toFixed(2);
+
+    const handlePayment = async () => {
+
+        const stripe = await stripePromise;
+
+        const res = await axios.post("/payments/create-checkout-session", {
+            products: cart,
+            couponCode: coupon ? coupon.code : null
+        })
+
+        const session = res.data;
+        const result = await stripe.redirectToCheckout({
+            sessionId: session.id,
+        })
+
+        if(result.error){
+            console.log("Error redirecting to checkout", result.error);
+        }
+    }
 
   return (
     <motion.div
@@ -46,7 +69,7 @@ export default function OrderSummory() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
             >
-                <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg">Proceed to checkout</button>
+                <button className="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg" onClick={handlePayment}>Proceed to checkout</button>
             </motion.div>
         </div>
     </motion.div>
