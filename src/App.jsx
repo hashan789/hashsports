@@ -9,6 +9,7 @@ import AdminPage from "./pages/AdminPage"
 import CategoryPage from "./pages/CategoryPage"
 import CartPage from "./pages/CartPage"
 import { useCartState } from "./stores/useCartState"
+import PurchaseSuccessPage from "./pages/PurchaseSuccessPage"
 
 function App() {
 
@@ -36,6 +37,7 @@ function App() {
           <Route path="/login" element={ !user ? <LoginPage /> : <Navigate to={'/'} /> } />
           <Route path="/dashboard" element={ user?.role === 'admin' ? <AdminPage /> : <LoginPage />} />
           <Route path="/cart" element={ user ? <CartPage /> : <Navigate to={'/login'} />} />
+          <Route path="/payment-success" element={  <PurchaseSuccessPage />  } />
           <Route path="/category/:category" element={<CategoryPage />} />
         </Routes>
       </div>
