@@ -144,7 +144,7 @@ export const getProductsByCategory = async (req, res) => {
     try {
         const products = await Product.find({ category });
 
-        res.json( products );
+        res.json({ products });
     } catch (error) {
         res.status(500).json({ message: "Internal server error", error: error.message });
     }
