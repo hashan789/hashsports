@@ -1,4 +1,5 @@
 import Cover from "../components/Cover";
+import FeaturedProducts from "../components/FeaturedProducts";
 import ProductsShow from "../components/ProductsShow";
 import { motion } from "framer-motion";
 
@@ -11,6 +12,7 @@ export default function HomePage() {
     >
       <Cover/>
       <ProductsShow/>
+      <FeaturedProducts />
     </motion.div>
   )
 }
