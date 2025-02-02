@@ -25,7 +25,7 @@ export default function ProductCard({ product }) {
   return (
     <div className="flex flex-col justify-center items-center text-center overflow-hidden border">
 
-      <div className="flex w-52 overflow-hidden rounded-xl">
+      <div className="flex overflow-hidden rounded-xl">
         <img src={product.image} alt="" className="object-cover w-full" />
         <div className=""></div>
       </div>
