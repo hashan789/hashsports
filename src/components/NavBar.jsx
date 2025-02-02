@@ -23,7 +23,7 @@ export default function NavBar() {
                     Home
                 </Link>
                 {
-                    user && (
+                    user && !isAdmin && (
                         <Link to={"/cart"} className="relative group text-sm font-bold space-x-2">
                             <span className="absolute -top-2 left-4 text-sm rounded-full px-1 py-0.5 bg-green-500 group-hover:text-blue-500 transition duration-300">{ cart.length }</span>
                             <ShoppingCart className="inline-block mr-3 group-hover:text-blue-500 transtion duration-300" size={20}/>
