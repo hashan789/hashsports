@@ -1,16 +1,31 @@
 import { motion } from "framer-motion"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCartState } from "../stores/useCartState";
 
 export default function GiftCouponCard() {
 
     const [ couponCode, setCouponCode ] = useState("");
 
-    const { coupon, isCouponApplied } = useCartState();
+    const { coupon, applyCoupon, removeCoupon, getMyCoupon, isCouponApplied } = useCartState();
 
-    const handleCouponCode = (e) => {
-        console.log(e.target.value);
+    useEffect(() => {
+        getMyCoupon();
+    },[getMyCoupon])
+
+    useEffect(() => {
+        if (coupon) setCouponCode(coupon.code);
+    },[coupon])
+
+    const handleApplyCouponCode = () => {
+       if (!couponCode) return;
+       applyCoupon(couponCode);
     }
+
+    const handleRemoveCouponCode = async () => {
+       await removeCoupon(couponCode);
+     }
+
+
 
   return (
     <motion.div
@@ -29,7 +44,7 @@ export default function GiftCouponCard() {
                     value={couponCode}
                     onChange={(e) => { setCouponCode(e.target.value) }}
                 />
-                <button className="bg-blue-500 text-white text-sm p-2 rounded-md" onClick={handleCouponCode}>Apply</button>
+                <button className="bg-blue-500 text-white text-sm p-2 rounded-md" onClick={handleApplyCouponCode}>Apply</button>
             </div>
         </div>
         {
@@ -39,6 +54,7 @@ export default function GiftCouponCard() {
                     <div className="flex justify-between items-center mt-2">
                         <p className="text-base">{coupon.code}-{coupon.discountPercentage} % off</p>
                     </div>
+                <button className="bg-blue-500 text-white text-sm p-2 rounded-md" onClick={handleRemoveCouponCode}>Remove</button>
                 </div>
             )
         }
