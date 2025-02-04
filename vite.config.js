@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => {
     server:{
       proxy: {
         '/api': {
-          target: 'http://hashsports-server-hmcxdehwapcwa2a4.canadacentral-01.azurewebsites.net',
+          target: 'https://hashsports-server-hmcxdehwapcwa2a4.canadacentral-01.azurewebsites.net',
         },
       },
     }
