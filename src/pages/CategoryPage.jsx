@@ -18,7 +18,7 @@ export default function CategoryPage() {
     <div className="container min-h-screen relative top-20">
       <div className="w-full">
           <motion.div
-            className="text-center "
+            className="text-center text-3xl font-semibold my-10"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
