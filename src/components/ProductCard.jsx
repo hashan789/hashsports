@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import toast, { Toaster } from "react-hot-toast";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, NotepadTextIcon } from "lucide-react";
 import { useUserState } from "../stores/useUserState";
 import { useCartState } from "../stores/useCartState";
+import { Link } from "react-router-dom";
 // import motion from 'framer-motion'
 
 export default function ProductCard({ product }) {
@@ -26,7 +27,7 @@ export default function ProductCard({ product }) {
     <div className="flex flex-col justify-center items-center text-center overflow-hidden border">
 
       <div className="flex overflow-hidden rounded-xl">
-        <img src={product.image} alt="" className="object-cover w-full" />
+        <img src={product.image} alt="" className="object-cover w-52" />
         <div className=""></div>
       </div>
 
@@ -37,6 +38,10 @@ export default function ProductCard({ product }) {
           <ShoppingCart width={20} />
           <span className="text-xs ml-3">Add to Cart</span>  
         </button>
+        <Link to={`/product/${product._id}`} className="flex flex-row items-center my-4 border px-5 py-1 rounded bg-green-500 text-white"> 
+          <NotepadTextIcon width={20} />
+          <span className="text-xs ml-3">View More</span>  
+        </Link>
       </div>
       <Toaster />
     </div>
