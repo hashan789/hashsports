@@ -10,6 +10,7 @@ import CategoryPage from "./pages/CategoryPage"
 import CartPage from "./pages/CartPage"
 import { useCartState } from "./stores/useCartState"
 import PurchaseSuccessPage from "./pages/PurchaseSuccessPage"
+import ProductDescriptionPage from "./pages/ProductDescriptionPage"
 
 function App() {
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="/dashboard" element={ user?.role === 'admin' ? <AdminPage /> : <LoginPage />} />
           <Route path="/cart" element={ user ? <CartPage /> : <Navigate to={'/login'} />} />
           <Route path="/payment-success" element={  <PurchaseSuccessPage />  } />
+          <Route path="/product/:id" element={  <ProductDescriptionPage />  } />
           <Route path="/category/:category" element={<CategoryPage />} />
         </Routes>
       </div>
