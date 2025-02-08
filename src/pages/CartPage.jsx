@@ -15,7 +15,7 @@ export default function CartPage() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
-      className="container mx-auto flex justify-center items-center relative top-20"
+      className="container mx-auto flex justify-center relative top-20"
     >
       <div className="w-9/12">
           {
@@ -24,7 +24,7 @@ export default function CartPage() {
             ) : (
               <div className="container mx-auto">
                 <h1 className="text-2xl font-semibold">Your Cart</h1>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-4 my-5 w-1/2">
                   {
                     cart.map((item,index) => (
                       <CartItem key={index} item={item} />
