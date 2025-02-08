@@ -51,6 +51,7 @@ export default function OrderSummory() {
                     <dt>Discount: </dt>
                     <dd>$ {fixedSavings}</dd>
                 </dl> }
+                <div className="w-full h-0.5 bg-blue-500 my-3"></div>
                 <dl className="flex justify-between">
                     <dt>Total</dt>
                     <dd>$ {fixedTotal}</dd>
