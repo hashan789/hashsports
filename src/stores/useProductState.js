@@ -53,6 +53,20 @@ export const useProductState = create((set) => ({
         }
     },
 
+    getProduct: async (id) => {
+
+        set({ loading : true });
+
+        try{
+            const res = await axios.get(`/product/products/${id}`);
+            set({ products: res.data, loading: false });
+        }
+        catch(error){
+            set({ loading: false });
+            toast.error(error.response.data.error);
+        }
+    },
+
     deleteProduct: async (productId) => {
         set({ loading: true });
 
