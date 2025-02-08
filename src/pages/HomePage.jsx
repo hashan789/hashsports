@@ -1,7 +1,10 @@
 import Cover from "../components/Cover";
 import FeaturedProducts from "../components/FeaturedProducts";
 import ProductsShow from "../components/ProductsShow";
+import BrandsShow from "../components/BrandsShow";
 import { motion } from "framer-motion";
+import Footer from "../components/Footer";
+import SpecialOffer from "../components/SpecialOffer";
 
 export default function HomePage() {
   return (
@@ -12,7 +15,10 @@ export default function HomePage() {
     >
       <Cover/>
       <ProductsShow/>
+      <SpecialOffer />
       <FeaturedProducts />
+      <BrandsShow />
+      <Footer />
     </motion.div>
   )
 }
