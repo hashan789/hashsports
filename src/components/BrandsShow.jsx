@@ -1,11 +1,8 @@
 
-import dsi from '../images/brands/dsi.png'
-import nike from '../images/brands/Nike-Logo.png'
-import moose from '../images/brands/moose.jpeg'
 
 export default function BrandsShow() {
 
-  const brands = [dsi, nike, moose];
+  const brands = ['/images/brands/dsi.png', '/images/brands/Nike-Logo.png', '/images/brands/moose.jpeg'];
 
   return (
     <div className="flex justify-center items-center mb-10">
