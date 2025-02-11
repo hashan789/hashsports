@@ -3,7 +3,7 @@ import { Trash, Star } from 'lucide-react';
 
 export default function ProductsList() {
 
-  const columns = ["Product", "Price", "Category", "Featured", "Actions"];
+  const columns = ["Product", "Price", "Category","Stock", "Featured", "Actions"];
 
   const { deleteProduct, toggleFeaturedProducts , products } = useProductState();
 
@@ -49,6 +49,9 @@ export default function ProductsList() {
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="text-sm text-white">{product.category}</div>
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap">
+                  <div className="text-sm text-white">{product.stock}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <button

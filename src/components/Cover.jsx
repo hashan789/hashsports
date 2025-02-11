@@ -2,7 +2,7 @@
 
 export default function Cover() {
   return (
-    <div className={`bg-[url("src/images/cover_page.png")] w-full bg-center h-screen`}> 
+    <div className={`bg-[url("/images/cover_page.png")] w-full bg-center h-screen`}> 
         <div className="w-full flex justify-center items-center top-80 absolute">
             <div className="w-7/12 text-center">
                 <h1 className="text-7xl text-white font-bold">Grab the chance</h1>
