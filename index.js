@@ -19,13 +19,7 @@ const app = express();
 
 app.use(express.json({  limit: '10mb' }));
 app.use(cookieParser());
-app.use(cors(
-    {
-        origin: "https://thankful-forest-00605b80f.4.azurestaticapps.net/", // Allow only your frontend
-        methods: "GET,POST,PUT,DELETE",
-        allowedHeaders: "Content-Type,Authorization"
-    }
-));
+app.use(cors());
 
 app.use("/api/auth", authRoutes)
 app.use("/api/product", productRoutes)
