@@ -29,8 +29,8 @@ app.use("/api/payments", paymentRoutes)
 app.use("/api/analytics", analyticsRoutes)
 
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, async () => {
     console.log('Server running on port 5000');
 
-    connectDB();
+    await connectDB();
 })
