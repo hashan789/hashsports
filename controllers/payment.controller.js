@@ -125,6 +125,17 @@ export const checkoutSuccess = async (req,res) => {
 }
 
 
+export const getAllOrders = async (req, res) => {
+    try{
+        const orders = await Order.find({});
+        res.json({ orders });
+    }
+    catch(error){
+        res.status(500).json({message: error.message})
+    }
+}
+
+
 //functions
 
 async function createStripeCoupon(discountPercentage){
