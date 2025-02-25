@@ -4,6 +4,7 @@ import axios from '../lib/axios'
 
 export const useCartState = create((set,get) => ({
     cart : [],
+    orders : [],
     coupon: null,
     loading: false,
     isCouponApplied: false,
@@ -118,6 +119,20 @@ export const useCartState = create((set,get) => ({
         }
         catch(error){
             toast.error(error.response.data.message || "Failed to apply coupon");
+        }
+    },
+
+    getAllOrders: async () => {
+
+        set({ loading : true });
+
+        try {
+            const res = await axios.get('/payments/');
+            set({ orders: res.data.orders, loading: false });
+        }
+        catch(error){
+            set({ loading: false });
+            return toast.error(error.response.data.error);
         }
     },
 
