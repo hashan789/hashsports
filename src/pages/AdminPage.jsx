@@ -1,9 +1,11 @@
-import { PenBox, LucideShoppingCart , ChartNoAxesCombinedIcon } from "lucide-react";
+import { PenBox, LucideShoppingCart , ChartNoAxesCombinedIcon, BookTextIcon } from "lucide-react";
 import { useState , useEffect } from "react";
 import CreateProductForm from "../components/CreateProductForm";
 import AnalyticsTab from "../components/AnalyticsTab";
 import ProductsList from "../components/ProductsList";
 import { useProductState } from "../stores/useProductState";
+import Orders from "../components/Orders";
+import { useCartState } from "../stores/useCartState";
 // import tabs from '../documents/tab.json'
 
 export default function AdminPage() {
@@ -23,14 +25,24 @@ export default function AdminPage() {
         id: "analytics",
         label: "Analytics",
         icon: ChartNoAxesCombinedIcon
+    },
+    {
+      id: "orders",
+      label: "Orders",
+      icon: BookTextIcon
     }
 ]
 
   const { getAllProducts } = useProductState();
+  const { getAllOrders } = useCartState();
 
   useEffect(() => {
     getAllProducts();
   }, [getAllProducts]);
+
+  useEffect(() => {
+    getAllOrders();
+  }, [getAllOrders]);
 
   const [activeTab, setActiveTab] = useState("create")
 
@@ -56,6 +68,7 @@ export default function AdminPage() {
         { activeTab === 'create' && <CreateProductForm /> }
         { activeTab === 'products' && <ProductsList /> }
         { activeTab === 'analytics' && <AnalyticsTab /> }
+        { activeTab === 'orders' && <Orders /> }
 
       </div>
     </div>
