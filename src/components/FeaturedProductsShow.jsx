@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react"
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
 
@@ -22,6 +20,8 @@ export default function FeaturedProductsShow({ products }) {
             return () => window.removeEventListener("resize", handleResize);
 
     },[]);
+
+    console.log(itemsPerPage);
 
 
   return (
