@@ -12,6 +12,7 @@ export default function CreateProductForm() {
         name: '',
         description: '',
         price: 0,
+        stock: 0,
         image: '',
         category: ''
     })
@@ -39,7 +40,7 @@ export default function CreateProductForm() {
     }
 
   return (
-    <div className="container w-full h-auto text-white px-10 pt-8 border rounded-lg mb-5">
+    <div className="container w-full h-auto text-black bg-white px-10 pt-8 border rounded-lg mb-5">
         <h1 className="font-semibold text-center text-2xl mb-8">Create Product</h1>
         <form action="" onSubmit={handleSubmit} className="mt-3 flex justify-around">
             <div className="text-sm">
@@ -47,7 +48,7 @@ export default function CreateProductForm() {
                 <input 
                     type="text" 
                     name="name" 
-                    className="border block pl-2 mb-5 mt-3 w-80 h-10 rounded-lg text-black"
+                    className="border border-black outline-none block pl-2 mb-5 mt-3 w-80 h-10 rounded-lg text-black"
                     value={newProduct.name}
                     onChange={(e) => setNewProduct({...newProduct, name: e.target.value})}
                     required
@@ -56,7 +57,7 @@ export default function CreateProductForm() {
                 <textarea 
                     type="text" 
                     name="description" 
-                    className="border block pl-2 mb-5 mt-3 w-80 h-20 rounded-lg text-black"
+                    className="border border-black outline-none block pl-2 mb-5 mt-3 w-80 h-20 rounded-lg text-black"
                     value={newProduct.description}
                     onChange={(e) => setNewProduct({...newProduct, description: e.target.value})}
                     required
@@ -65,7 +66,7 @@ export default function CreateProductForm() {
                 <input 
                     type="number" 
                     name="price" 
-                    className="border block pl-2 mb-5 mt-3 w-80 h-10 rounded-lg text-black"
+                    className="border border-black outline-none block pl-2 mb-5 mt-3 w-80 h-10 rounded-lg text-black"
                     value={newProduct.price}
                     step={'0.01'}
                     onChange={(e) => setNewProduct({...newProduct, price: e.target.value})}
@@ -73,11 +74,20 @@ export default function CreateProductForm() {
                 />
             </div>
             <div className="text-sm">
+                <label htmlFor="">Stock</label>
+                <input 
+                    type="number" 
+                    name="stock" 
+                    className="border border-black outline-none block pl-2 mb-5 mt-3 w-80 h-10 rounded-lg text-black"
+                    value={newProduct.stock}
+                    onChange={(e) => setNewProduct({...newProduct, stock: e.target.value})}
+                    required
+                />
                 <label htmlFor="category">Category</label>
                 <select 
                     name="category" 
                     id="category" 
-                    className="border block pl-2 mb-5 mt-3 w-80 h-10 rounded-lg text-black"
+                    className="border border-black outline-none block pl-2 mb-5 mt-3 w-80 h-10 rounded-lg text-black"
                     value={newProduct.category}
                     onChange={(e) => setNewProduct({...newProduct, category: e.target.value})}
                     required
@@ -90,7 +100,7 @@ export default function CreateProductForm() {
                 </select>
                 <div className="flex items-center gap-4 mb-5">
                     <label htmlFor="image">Upload Image</label>
-                    <div className="w-20 rounded-lg h-auto border ">
+                    <div className="w-20 rounded-lg h-auto border border-black outline-none">
                     <input 
                         type="file" 
                         name="image" 
@@ -100,7 +110,7 @@ export default function CreateProductForm() {
                         required
                     />
                     </div>
-                    <Upload width={20} className="relative top-0 -left-12"/>
+                    <Upload width={20} className="relative top-0 -left-12 "/>
                 { newProduct.image && <div className="text-sm mb-3">Image uploaded</div> }
                 </div>
                 {/* <label htmlFor="stock">Count in stock</label>
@@ -113,7 +123,7 @@ export default function CreateProductForm() {
                     required
                 /> */}
                 <div className="flex justify-center">
-                    <button className="text-center px-10 py-2 text-white border-white border rounded-lg flex items-center">
+                    <button className="text-center px-10 py-2 text-white bg-blue-600 hover:bg-blue-800 transition-all duration-300 border rounded-lg flex items-center">
                       <span><PlusCircle width={20} className="mr-1" /></span> 
                       <span>Create Product</span>
                     </button>
