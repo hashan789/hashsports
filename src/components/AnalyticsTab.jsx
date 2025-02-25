@@ -18,21 +18,25 @@ export default function AnalyticsTab() {
     {
       title : "Customers",
       value: analyticsData.users.toLocaleString(),
+      color: 'text-orange-500',
       icon: Users
     },
     {
       title : "Total Products",
       value: analyticsData.products.toLocaleString(),
+      color: 'text-blue-500',
       icon: Package
     },
     {
       title : "Total Sales",
       value: analyticsData.totalSales.toLocaleString(),
+      color: 'text-green-500',
       icon: ShoppingCart
     },
     {
       title : "Total Revenue",
       value: `$ ${analyticsData.totalRevenue.toLocaleString()}`,
+      color: 'text-yellow-500',
       icon: CircleDollarSign
     }
   ]
