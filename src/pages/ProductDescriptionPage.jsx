@@ -5,6 +5,7 @@ import { ShoppingCart } from "lucide-react";
 import { useCartState } from "../stores/useCartState";
 import { useUserState } from "../stores/useUserState";
 import toast from "react-hot-toast";
+import Footer from "../components/Footer";
 
 
 export default function ProductDescriptionPage() {
@@ -33,6 +34,7 @@ export default function ProductDescriptionPage() {
     },[getProduct,id])
 
   return (
+    <div className="">
     <div className="container mx-auto relative top-20">
         {
          
@@ -56,6 +58,10 @@ export default function ProductDescriptionPage() {
 
      
         }
+    </div>
+      <div className="relative top-40">
+        <Footer />
+      </div>
     </div>
   )
 }

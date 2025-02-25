@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Toaster } from "react-hot-toast";
 import { useUserState } from "../stores/useUserState";
+import Footer from "../components/Footer";
 
 export default function SignupPage() {
 
@@ -24,6 +25,7 @@ export default function SignupPage() {
   }
 
   return (
+    <>
     <div className="container mx-auto flex justify-center relative top-20">
       <motion.div 
         className="w-5/12 rounded-lg border pt-8 pb-8"
@@ -63,6 +65,10 @@ export default function SignupPage() {
         </motion.div>
         <Toaster />
       </div>
+      <div className="relative top-40">
+        <Footer />
+      </div>
+    </>
 
   )
 }
