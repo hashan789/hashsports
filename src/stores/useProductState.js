@@ -4,6 +4,7 @@ import axios from '../lib/axios'
 
 export const useProductState = create((set) => ({
     products: [],
+    product: [],
     loading: false,
 
     setProducts: (products) => set({products}),
@@ -60,6 +61,20 @@ export const useProductState = create((set) => ({
         try{
             const res = await axios.get(`/product/products/${id}`);
             set({ products: res.data, loading: false });
+        }
+        catch(error){
+            set({ loading: false });
+            toast.error(error.response.data.error);
+        }
+    },
+
+    getUpdateProduct: async (id) => {
+
+        set({ loading : true });
+
+        try{
+            const res = await axios.get(`/product/products/${id}`);
+            set({ product: res.data, loading: false });
         }
         catch(error){
             set({ loading: false });
