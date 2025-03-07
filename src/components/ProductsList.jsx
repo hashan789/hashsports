@@ -1,11 +1,15 @@
 import { useProductState } from "../stores/useProductState";
 import { Trash, Star } from 'lucide-react';
+import UpdateProductForm from "./UpdateProductForm";
+import { useState } from "react";
 
 export default function ProductsList() {
 
   const columns = ["Product", "Price", "Category","Stock", "Featured", "Actions"];
 
   const { deleteProduct, toggleFeaturedProducts , products } = useProductState();
+
+  const [ update, setUpdate ] = useState("hide");
 
   return (
     <div>
@@ -68,12 +72,29 @@ export default function ProductsList() {
                   >
                     <Trash width={20}/>
                   </button>
+                  <button
+                    className="ml-3 px-4 py-2 text-sm bg-white text-blue-700"
+                    onClick={() => setUpdate("open")}
+                  >
+                    Edit
+                  </button>
                 </td>
+                {
+                  update === "open" &&  (
+                      <div className={ `absolute left-1/4 top-20 z-20 border rounded-lg ${update === "hide" ? `bg-none` : `bg-white block`}`}>
+                          <UpdateProductForm id={product._id} />
+                          <div className="">
+                            <button onClick={() => setUpdate("hide")} className="absolute top-3 right-3 z-30 text-3xl bg-red-700 text-white px-2 py-1">*</button>
+                          </div>
+                      </div>
+                   )
+                }
               </tr>
             ))
           }
         </tbody>
       </table>
+
     </div>
   )
 }
