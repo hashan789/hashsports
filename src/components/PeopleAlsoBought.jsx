@@ -27,7 +27,7 @@ export default function PeopleAlsoBought() {
   return (
     <div className="mt-8">
       <h3 className="text-2xl font-semibold">People Also Bought</h3>
-      <div className="mt-6 flex items-center justify-center gap-4">
+      <div className="mt-6 flex items-center gap-4">
         {
           recommendations.map((product,index) => (
             <ProductCard key={index} product={product} />
