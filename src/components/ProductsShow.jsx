@@ -6,17 +6,17 @@ export default function ProductsShow() {
     const categories = [
         {
             name: "Shoes",
-            className: 'bg-[url("/images/products/1.png")] w-full h-56 bg-cover',
+            className: 'bg-[url("src/images/products/1.png")] w-full h-56 bg-cover',
             href: "shoes"
         },
         {
             name: "T-shirts",
-            className: 'bg-[url("/images/products/12.png")] w-full h-56 bg-cover',
+            className: 'bg-[url("src/images/products/12.png")] w-full h-56 bg-cover',
             href: "tshirts"
         },
         {
             name: "Trousers",
-            className: 'bg-[url("/images/products/20.png")] w-full h-56 bg-cover',
+            className: 'bg-[url("src/images/products/20.png")] w-full h-56 bg-cover',
             href: "trousers"
         }
     ]
