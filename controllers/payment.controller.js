@@ -95,7 +95,6 @@ export const checkoutSuccess = async (req,res) => {
                 }
             );
 
-            res.status(200).json({ message: "Payment successful" });
         }
 
         //create a new order
