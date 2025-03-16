@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
-
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function FeaturedProductsShow({ products }) {
 
-    const [ itemsPerPage, setItemsPerPage ] = useState(5);
+    const [currentIndex, setCurrentIndex] = useState(0);
+	const [itemsPerPage, setItemsPerPage] = useState(4);
 
     useEffect(() => {
 
@@ -21,27 +22,56 @@ export default function FeaturedProductsShow({ products }) {
 
     },[]);
 
+    const nextSlide = () => {
+		setCurrentIndex((prevIndex) => prevIndex + itemsPerPage);
+	};
+
+	const prevSlide = () => {
+		setCurrentIndex((prevIndex) => prevIndex - itemsPerPage);
+	};
+
+	const isStartDisabled = currentIndex === 0;
+	const isEndDisabled = currentIndex >= products.length - itemsPerPage;
+
     console.log(itemsPerPage);
 
+    return (
+		<div className='py-12'>
+			<div className='container mx-auto px-4'>
+				<div className='relative'>
+					<div className='overflow-hidden'>
+						<div
+							className='flex transition-transform duration-300 ease-in-out'
+							style={{ transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)` }}
+						>
+							{products?.map((product) => (
+								<div key={product._id} className='w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 flex-shrink-0 px-2'>
+									<ProductCard product={product} />
+								</div>
+							))}
+						</div>
+					</div>
+					<button
+						onClick={prevSlide}
+						disabled={isStartDisabled}
+						className={`absolute top-1/2 -left-4 transform -translate-y-1/2 p-2 rounded-full transition-colors duration-300 ${
+							isStartDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-500"
+						}`}
+					>
+						<ChevronLeft className='w-6 h-6' />
+					</button>
 
-  return (
-    <div className="py-12">
-    <div className="container mx-auto px-4">
-        <div className="">
-            <div className="w-full">
-            <div
-                className="flex justify-center"
-            >
-                {products.map((product,index) => (
-                <div key={index} size={100} className="p-4 text-center">
-                    <ProductCard product={product} />
-                </div>
-                ))}
-            </div>
-            </div>
-        </div>
-    
-    </div>
-    </div>
-  )
+					<button
+						onClick={nextSlide}
+						disabled={isEndDisabled}
+						className={`absolute top-1/2 -right-4 transform -translate-y-1/2 p-2 rounded-full transition-colors duration-300 ${
+							isEndDisabled ? "bg-gray-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-500"
+						}`}
+					>
+						<ChevronRight className='w-6 h-6' />
+					</button>
+				</div>
+			</div>
+		</div>
+	);
 }
