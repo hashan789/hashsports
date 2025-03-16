@@ -15,7 +15,8 @@ export default function FeaturedProducts() {
         <div className='flex justify-center items-center p-10 mb-10'>
         <div className="top-12 relative">
             <h1 className="text-4xl text-center font-semibold">Featured Products</h1>
-            <div className="mt-12 flex justify-center items-center gap-6">
+            <h1 className="text-lg text-center mt-8">Check out our handpicked selection of best-selling and top-rated products. </h1>
+            <div className="mt-5 flex justify-center items-center gap-6">
                 {
                    !isLoading && products.length > 0 && <FeaturedProductsShow products={products} />
                 }
