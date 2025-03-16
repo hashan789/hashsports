@@ -2,7 +2,7 @@
 
 export default function SpecialOffer() {
   return (
-    <div className="container mx-auto mt-20 bg-yellow-300">
+    <div className="w-full bg-center mt-20 bg-yellow-300">
         <div className="flex justify-center items-center p-5">
             <div className="w-4/12 flex justify-center items-center">
                 <img src={'/images/products/3.png'} alt="" width={400} className='h-auto mix-blend-multiply z-10'/>
