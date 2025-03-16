@@ -1,8 +1,15 @@
 
+import dsi from '../images/brands/dsi.png'
+import adidas from '../images/brands/adidas.png'
+import fila from '../images/brands/fila.png'
+import levis from '../images/brands/levis.png'
+import puma from '../images/brands/puma.jpg'
+import nike from '../images/brands/Nike-Logo.png'
+import moose from '../images/brands/moose.jpeg'
 
 export default function BrandsShow() {
 
-  const brands = ['/images/brands/dsi.png', '/images/brands/Nike-Logo.png', '/images/brands/moose.jpeg'];
+  const brands = [dsi, adidas, fila, levis, puma, nike, moose];
 
   return (
     <div className="flex justify-center items-center mb-10">
@@ -11,7 +18,7 @@ export default function BrandsShow() {
         <div className="flex justify-around items-center gap-10">
           {
             brands.map((brand, index) => (
-              <img key={index} src={brand} alt="brand" width={200} className="brand-image mix-blend-hard-light" />
+              <img key={index} src={brand} alt="brand" width={150} className="brand-image mix-blend-hard-light" />
             ))
           }
         </div>
