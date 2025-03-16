@@ -1,0 +1,17 @@
+[
+    {
+        "id": "create",
+        "label": "create Product",
+        "icon": "PenBox"
+    },
+    {
+        "id": "products",
+        "label": "Products",
+        "icon": "LucideShoppingCart"
+    },
+    {
+        "id": "analytics",
+        "label": "Analytics",
+        "icon": "ChartNoAxesCombinedIcon"
+    }
+]
