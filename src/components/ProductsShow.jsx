@@ -25,6 +25,7 @@ export default function ProductsShow() {
     <div className='flex justify-center items-center p-10 mb-10'>
         <div className="top-12 relative">
             <h1 className="text-4xl text-center font-semibold">Explore New Categories</h1>
+            <h1 className="text-lg text-center mt-8">Discover the latest additions to our collection! </h1>
             <div className="mt-12 flex justify-center items-center gap-6">
                 {
                     categories.map((category, index) => (

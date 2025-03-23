@@ -1,5 +1,3 @@
-
-
 export default function BrandsShow() {
 
   const brands = ['/images/brands/dsi.png', '/images/brands/Nike-Logo.png', '/images/brands/moose.jpeg'];
@@ -11,7 +9,7 @@ export default function BrandsShow() {
         <div className="flex justify-around items-center gap-10">
           {
             brands.map((brand, index) => (
-              <img key={index} src={brand} alt="brand" width={200} className="brand-image mix-blend-hard-light" />
+              <img key={index} src={brand} alt="brand" width={150} className="brand-image mix-blend-hard-light" />
             ))
           }
         </div>
