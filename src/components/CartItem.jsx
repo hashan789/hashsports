@@ -6,7 +6,7 @@ export default function CartItem({ item }) {
     const { removeFromCart, updateQuantity } = useCartState();
 
   return (
-    <div>
+    <div className="max-sm:flex max-sm:justify-center max-sm:items-center">
         <div className="flex items-center gap-4 border p-5">
             <div className="w-20 h-20">
             <img src={item.image} alt={item.name} className="w-full h-full object-cover rounded-lg" />
