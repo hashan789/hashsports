@@ -4,10 +4,10 @@ export default function Footer() {
   return (
     <div>
         <div className="bg-gray-800 text-white py-10">
-            <div className="container mx-auto flex justify-between items-center">
+            <div className="container mx-auto flex lg:justify-between max-sm:justify-around items-center">
             <div>
                 <h1 className="text-xl font-bold">Links</h1>
-                <ul className="flex justify-center gap-5 mt-3 text-sm">
+                <ul className="lg:flex lg:justify-center lg:gap-5 max-sm:block mt-3 text-sm">
                     <li>Home</li>
                     <li>Products</li>
                     <li>Brands</li>

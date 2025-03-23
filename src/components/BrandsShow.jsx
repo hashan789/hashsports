@@ -14,11 +14,11 @@ export default function BrandsShow() {
   return (
     <div className="flex justify-center items-center mb-10">
       <div className="">
-        <h1 className="text-center text-4xl font-bold my-10">Brands</h1>
-        <div className="flex justify-around items-center gap-10">
+        <h1 className="text-center lg:text-4xl max-sm:text-2xl font-bold my-10">Brands</h1>
+        <div className="lg:flex lg:justify-center lg:items-center max-sm:grid max-sm:grid-cols-3 lg:gap-10 max-sm:gap-5">
           {
             brands.map((brand, index) => (
-              <img key={index} src={brand} alt="brand" width={150} className="brand-image mix-blend-hard-light" />
+              <img key={index} src={brand} alt="brand" className="lg:w-36 max-sm:w-20 brand-image mix-blend-hard-light" />
             ))
           }
         </div>

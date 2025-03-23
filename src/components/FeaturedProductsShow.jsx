@@ -36,8 +36,8 @@ export default function FeaturedProductsShow({ products }) {
     console.log(itemsPerPage);
 
     return (
-		<div className='py-12'>
-			<div className='container mx-auto px-4'>
+		<div className='py-12 max-sm:w-full'>
+			<div className='lg:container max-sm:w-64 mx-auto px-4'>
 				<div className='relative'>
 					<div className='overflow-hidden'>
 						<div
@@ -45,7 +45,7 @@ export default function FeaturedProductsShow({ products }) {
 							style={{ transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)` }}
 						>
 							{products?.map((product) => (
-								<div key={product._id} className='w-full sm:w-1/2 lg:w-1/3 xl:w-1/4 flex-shrink-0 px-2'>
+								<div key={product._id} className='sm:w-1/2 lg:w-1/3 xl:w-1/4 flex-shrink-0 px-2'>
 									<ProductCard product={product} />
 								</div>
 							))}
