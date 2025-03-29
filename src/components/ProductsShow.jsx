@@ -26,7 +26,8 @@ export default function ProductsShow() {
         <div className="top-12 relative">
             <h1 className="lg:text-4xl max-sm:text-2xl text-center font-semibold">Explore New Categories</h1>
             <h1 className="lg:text-lg max-sm:text-sm text-center mt-8">Discover the latest additions to our collection! </h1>
-            <div className="mt-12 lg:flex max-sm:block justify-center items-center gap-6">
+            <div className="mt-12 flex justify-center items-center">
+                <div className="lg:flex lg:justify-center lg:items-center lg:gap-6 max-sm:block">
                 {
                     categories.map((category, index) => (
                         <div key={index} className="w-60 text-center">
@@ -36,6 +37,7 @@ export default function ProductsShow() {
                         </div>
                     ))
                 }
+                </div>
                 
             </div>
         </div>

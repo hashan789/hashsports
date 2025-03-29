@@ -40,11 +40,12 @@ export default function ProductDescriptionPage() {
          
                 <div className="">
                     <h1 className="text-2xl text-center mt-3 mb-10 font-bold">Description</h1>
-                    <div className="container flex justify-center items-center">
-                        <div className="w-4/12 flex justify-center items-center">
+                    <div className="container lg:flex max-sm:block justify-center items-center">
+                        <div className="lg:w-4/12 max-sm:w-full flex justify-center items-center">
                             <img src={products.image} alt="" />
                         </div>
-                        <div className="w-8/12">
+                        <div className="lg:w-8/12 max-sm:w-full max-sm:flex max-sm:justify-center max-sm:items-center">
+                        <div>
                             <h1 className="text-2xl mt-3 mb-10 font-semibold">{ products.name }</h1>
                             <p className="text-sm mb-5">{products.description}</p>
                             <p className="text-sm">$ {products.price}</p>
@@ -52,6 +53,7 @@ export default function ProductDescriptionPage() {
                                 <ShoppingCart width={20} />
                                 <span className="text-xs ml-3">Add to Cart</span>  
                             </button>
+                        </div>
                         </div>
                     </div>
                 </div>
