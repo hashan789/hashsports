@@ -16,7 +16,13 @@ export default function Footer() {
             </div>
             <div>
                 <h1 className="text-xl font-bold">Contact</h1>
-                <p className="text-sm">Hashsports, 123 Main Street, City, State, 12345</p>
+                <ul className="lg:flex lg:justify-center lg:gap-5 max-sm:block mt-3 text-sm">
+                    <li>Hashsports, </li>
+                    <li>123 Main Street, </li>
+                    <li>City, </li>
+                    <li>State, </li>
+                    <li>12345</li>
+                </ul>
             </div>
         </div>
             <div className="flex justify-center items-center">
