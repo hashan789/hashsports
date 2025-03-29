@@ -45,7 +45,7 @@ export default function FeaturedProductsShow({ products }) {
 							style={{ transform: `translateX(-${currentIndex * (100 / itemsPerPage)}%)` }}
 						>
 							{products?.map((product) => (
-								<div key={product._id} className='sm:w-1/2 lg:w-1/3 xl:w-1/4 flex-shrink-0 px-2'>
+								<div key={product._id} className='sm:w-1/2 lg:w-1/3 xl:w-1/4 max-sm:w-fit flex-shrink-0 px-2'>
 									<ProductCard product={product} />
 								</div>
 							))}
