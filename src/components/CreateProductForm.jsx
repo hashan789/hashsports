@@ -40,8 +40,8 @@ export default function CreateProductForm() {
     }
 
   return (
-    <div className="container w-full h-auto text-black bg-white px-10 pt-8 border rounded-lg mb-5">
-        <h1 className="font-semibold text-center text-2xl mb-8">Create Product</h1>
+    <div className="container w-full h-auto text-black bg-white px-10 pt-8 rounded-lg mb-5">
+        <h1 className="font-semibold text-2xl mb-8">Create Product</h1>
         <form action="" onSubmit={handleSubmit} className="mt-3 flex justify-around">
             <div className="text-sm">
                 <label htmlFor="">Name</label>

@@ -12,6 +12,11 @@ export default function AdminPage() {
 
   const tabs = [
     {
+        id: "analytics",
+        label: "Analytics",
+        icon: ChartNoAxesCombinedIcon
+    },
+    {
         id: "create",
         label: "Create Product",
         icon: PenBox
@@ -20,11 +25,6 @@ export default function AdminPage() {
         id: "products",
         label: "Products",
         icon: LucideShoppingCart
-    },
-    {
-        id: "analytics",
-        label: "Analytics",
-        icon: ChartNoAxesCombinedIcon
     },
     {
       id: "orders",
@@ -44,7 +44,7 @@ export default function AdminPage() {
     getAllOrders();
   }, [getAllOrders]);
 
-  const [activeTab, setActiveTab] = useState("create")
+  const [activeTab, setActiveTab] = useState("analytics")
 
   return (
     <div className="mx-auto flex justify-center relative min-h-screen h-auto">
@@ -63,11 +63,11 @@ export default function AdminPage() {
         </div>
       </div>
 
-      <div className="w-10/12 min-h-screen h-full bg-slate-600 grid pt-28 px-5">
+      <div className="w-10/12 min-h-screen h-full grid pt-28 px-5">
         
+        { activeTab === 'analytics' && <AnalyticsTab /> }
         { activeTab === 'create' && <CreateProductForm /> }
         { activeTab === 'products' && <ProductsList /> }
-        { activeTab === 'analytics' && <AnalyticsTab /> }
         { activeTab === 'orders' && <Orders /> }
 
       </div>

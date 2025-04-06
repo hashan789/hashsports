@@ -21,7 +21,7 @@ export default function AnalyticsChart({ dailySalesData }) {
                     yAxisId='left'
                     type='monotone'
                     dataKey="sales"
-                    stroke="yellow"
+                    stroke="green"
                     activeDot={{ r: 8 }}
                     name="Sales"
                 />

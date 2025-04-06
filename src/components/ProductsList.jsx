@@ -13,15 +13,15 @@ export default function ProductsList() {
 
   return (
     <div>
-      <table className="divide-y divide-white min-w-full">
-        <thead className="bg-gray-700">
+      <table className="divide-y min-w-full text-black">
+        <thead className="">
           <tr>
             {
               columns.map((column, index) => (
                 <th
                   key={index}
                   scope="col"
-                  className="px-6 py-3 text-left text-xs font-medium text-white uppercase tracking-wider"
+                  className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
                 >
                   {column}
                 </th>
@@ -33,7 +33,7 @@ export default function ProductsList() {
         <tbody>
           {
             products?.map((product, index) => (
-              <tr key={index} className="bg-gray-800">
+              <tr key={index} className="text-black">
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10">
@@ -44,18 +44,18 @@ export default function ProductsList() {
                       />
                     </div>
                     <div className="ml-4">
-                      <div className="text-sm font-medium text-white">{product.name}</div>
+                      <div className="text-sm font-medium">{product.name}</div>
                     </div>
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-white">{product.price}</div>
+                  <div className="text-sm">{product.price}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-white">{product.category}</div>
+                  <div className="text-sm">{product.category}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-white">{product.stock}</div>
+                  <div className="text-sm">{product.stock}</div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <button
@@ -73,7 +73,7 @@ export default function ProductsList() {
                     <Trash width={20}/>
                   </button>
                   <button
-                    className="ml-3 px-4 py-2 text-sm bg-white text-blue-700"
+                    className="ml-3 px-4 py-2 text-sm text-white bg-blue-700 rounded-2xl hover:bg-blue-800 transition-all duration-300"
                     onClick={() => setUpdate("open")}
                   >
                     Edit
