@@ -25,7 +25,7 @@ export default function LoginPage() {
     <>
     <div className="container mx-auto flex justify-center relative top-20">
       <motion.div 
-        className="lg:w-5/12 max-sm:w-9/12 rounded-lg border pt-8 pb-8"
+        className="lg:w-5/12 max-sm:w-9/12 lg:rounded-lg lg:border pt-8 pb-8"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
