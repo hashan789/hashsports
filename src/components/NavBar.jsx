@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { LogIn, LogOut, ShoppingCart, UserPlus } from 'lucide-react'
 import { useUserState } from "../stores/useUserState";
 import { useCartState } from "../stores/useCartState";
+import { useEffect, useState } from "react";
 
 export default function NavBar() {
 
@@ -10,8 +11,37 @@ export default function NavBar() {
 
     const isAdmin = user?.role === 'admin';
 
+    const [navColor, setNavColor] = useState({
+        text : "text-blue-300",
+        bg : "",
+        shadow : ""
+    });
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > window.innerHeight) {
+                setNavColor({
+                    text : "text-black",
+                    bg : "bg-white",
+                    shadow : "shadow-md"
+                }); // Change to any color
+            } else {
+                setNavColor({
+                    text : "text-blue-300",
+                    bg : "",
+                    shadow : ""
+                }); // Default color
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
   return (
-    <header className='fixed font-poppins z-40 lg:top-0 max-sm:bottom-0 left-0 w-full h-14 transition-all duration-300 lg:bg-black max-sm:bg-white lg:bg-opacity-25 lg:text-white max-sm:text-black max-sm:border-2 max-sm:rounded-t-2xl'>
+    <header className={`fixed font-poppins z-40 lg:top-0 max-sm:bottom-0 left-0 w-full h-14 transition-all duration-300 ${navColor.text} ${navColor.bg} ${navColor.shadow} max-sm:rounded-t-2xl`}>
         <div className="container mx-auto px-4 py-3 flex items-center justify-around">
             <div className="relative left-0 float-left">
                 <Link to={"/"} className="text-2xl font-bold space-x-2 flex">
