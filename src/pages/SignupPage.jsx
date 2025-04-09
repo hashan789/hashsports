@@ -3,7 +3,6 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Toaster } from "react-hot-toast";
 import { useUserState } from "../stores/useUserState";
-import Footer from "../components/Footer";
 
 export default function SignupPage() {
 
@@ -25,10 +24,10 @@ export default function SignupPage() {
   }
 
   return (
-    <>
+    <div className="">
     <div className="container mx-auto flex justify-center relative top-20">
       <motion.div 
-        className="lg:w-5/12 max-sm:w-9/12 rounded-lg border pt-8 pb-8"
+        className="lg:w-5/12 max-sm:w-9/12 rounded-lg border shadow-md max-sm:px-4 pt-8 pb-8 shadow-gray"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -65,10 +64,10 @@ export default function SignupPage() {
         </motion.div>
         <Toaster />
       </div>
-      <div className="relative top-40">
+      {/* <div className="relative top-40">
         <Footer />
-      </div>
-    </>
+      </div> */}
+    </div>
 
   )
 }
