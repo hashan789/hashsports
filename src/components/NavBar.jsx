@@ -12,8 +12,8 @@ export default function NavBar() {
     const isAdmin = user?.role === 'admin';
 
     const [navColor, setNavColor] = useState({
-        text : "text-blue-300",
-        bg : "",
+        text : "text-white",
+        bg : "bg-black bg-opacity-30",
         shadow : ""
     });
 
@@ -27,8 +27,8 @@ export default function NavBar() {
                 }); // Change to any color
             } else {
                 setNavColor({
-                    text : "text-blue-300",
-                    bg : "",
+                    text : "text-white",
+                    bg : "bg-black bg-opacity-30",
                     shadow : ""
                 }); // Default color
             }
