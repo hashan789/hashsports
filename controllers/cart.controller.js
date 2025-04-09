@@ -41,6 +41,19 @@ export const removeAllFromCart = async (req, res) => {
     }
 }
 
+export const removeAllItems = async (req,res) => {
+    try{
+        const user = req.user;
+        user.cartItems = [];
+
+        await user.save();
+        res.json(user.cartItems);
+    }
+    catch(error){
+        res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+}
+
 export const updateQuantity = async (req, res) => {
     try {
         
