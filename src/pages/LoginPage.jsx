@@ -2,7 +2,6 @@ import { Lock, Mail, Send } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useUserState } from "../stores/useUserState";
-import Footer from "../components/Footer";
 
 export default function LoginPage() {
 
@@ -22,10 +21,10 @@ export default function LoginPage() {
   }
 
   return (
-    <>
+    <div className="h-screen">
     <div className="container mx-auto flex justify-center relative top-20">
       <motion.div 
-        className="lg:w-5/12 max-sm:w-9/12 rounded-lg border pt-8 pb-8"
+        className="lg:w-5/12 max-sm:w-9/12 rounded-lg border shadow-md shadow-gray max-sm:px-4 pt-8 pb-8"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
@@ -53,9 +52,9 @@ export default function LoginPage() {
           </div>
         </motion.div>
       </div>
-      <div className="relative top-40">
+      {/* <div className="relative top-40">
         <Footer />
-      </div>
-    </>
+      </div> */}
+    </div>
   )
 }
