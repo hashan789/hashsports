@@ -6,28 +6,37 @@ import { Toaster } from "react-hot-toast";
 export default function UpdateProductForm({ id }) {
     const items = [ 'tshirts', 'trousers', 'shoes' ]
 
-    const { product, getUpdateProduct } = useProductState();
+    const { product, getUpdateProduct , updateProduct } = useProductState();
 
     useEffect(() => {
         getUpdateProduct(id);
     },[getUpdateProduct,id])
 
-    console.log(product)
+    console.log(id)
 
     const [ newProduct, setNewProduct ] = useState({
-        name: product.name,
-        description: product.description,
-        price: product.price,
-        stock: product.stock,
-        image: product.image,
-        category: product.category
+        name: '',
+        description: '',
+        price: '',
+        stock: '',
+        image: '',
+        category: ''
     })
 
-    const { createProduct } = useProductState();
+    useEffect(() => {
+        setNewProduct({...newProduct,
+            name: id ? product.name : '',
+            description: id ? product.description : '',
+            price: id ? product.price : '',
+            stock: id ? product.stock : '',
+            image: id ? product.image : '',
+            category: id ? product.category : ''
+        })
+    },[setNewProduct, newProduct, product, id])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await createProduct(newProduct);
+        await updateProduct(newProduct);
         console.log(newProduct)
     }
 
@@ -57,7 +66,6 @@ export default function UpdateProductForm({ id }) {
                     className="border block pl-2 mb-5 mt-3 w-80 h-10 rounded-lg text-black"
                     value={newProduct.name}
                     onChange={(e) => setNewProduct({...newProduct, name: e.target.value})}
-                    required
                 />
                 <label htmlFor="">Description</label>
                 <textarea 
@@ -66,7 +74,6 @@ export default function UpdateProductForm({ id }) {
                     className="border block pl-2 mb-5 mt-3 w-80 h-20 rounded-lg text-black"
                     value={newProduct.description}
                     onChange={(e) => setNewProduct({...newProduct, description: e.target.value})}
-                    required
                 />
                 <label htmlFor="">Price</label>
                 <input 
@@ -76,7 +83,6 @@ export default function UpdateProductForm({ id }) {
                     value={newProduct.price}
                     step={'0.01'}
                     onChange={(e) => setNewProduct({...newProduct, price: e.target.value})}
-                    required
                 />
             </div>
             <div className="text-sm">
@@ -87,7 +93,6 @@ export default function UpdateProductForm({ id }) {
                     className="border block pl-2 mb-5 mt-3 w-80 h-10 rounded-lg text-black"
                     value={newProduct.stock}
                     onChange={(e) => setNewProduct({...newProduct, stock: e.target.value})}
-                    required
                 />
                 <label htmlFor="category">Category</label>
                 <select 
@@ -96,7 +101,6 @@ export default function UpdateProductForm({ id }) {
                     className="border block pl-2 mb-5 mt-3 w-80 h-10 rounded-lg text-black"
                     value={newProduct.category}
                     onChange={(e) => setNewProduct({...newProduct, category: e.target.value})}
-                    required
                 >
                     {
                         items.map((item,index) => (
@@ -113,7 +117,6 @@ export default function UpdateProductForm({ id }) {
                         className="border block w-80 h-10 rounded-lg text-black opacity-0 cursor-pointer"
                         accept="image/*"
                         onChange={handleImageChange}
-                        required
                     />
                     </div>
                     <Upload width={20} className="relative top-0 -left-12"/>

@@ -9,7 +9,12 @@ export default function ProductsList() {
 
   const { deleteProduct, toggleFeaturedProducts , products } = useProductState();
 
-  const [ update, setUpdate ] = useState("hide");
+  const [ update, setUpdate ] = useState({
+    show: "hide",
+    id: ""
+  });
+
+  console.log(update)
 
   return (
     <div>
@@ -74,17 +79,17 @@ export default function ProductsList() {
                   </button>
                   <button
                     className="ml-3 px-4 py-2 text-sm text-white bg-blue-700 rounded-2xl hover:bg-blue-800 transition-all duration-300"
-                    onClick={() => setUpdate("open")}
+                    onClick={() => setUpdate({...update, show: "open", id: product._id })}
                   >
                     Edit
                   </button>
                 </td>
                 {
-                  update === "open" &&  (
-                      <div className={ `absolute left-1/4 top-20 z-20 border rounded-lg ${update === "hide" ? `bg-none` : `bg-white block`}`}>
-                          <UpdateProductForm id={product._id} />
+                  update.show === "open" &&  (
+                      <div className={ `absolute left-1/4 top-20 z-20 border rounded-lg ${update.show === "hide" ? `bg-none` : `bg-white block`}`}>
+                          <UpdateProductForm id={update.id} />
                           <div className="">
-                            <button onClick={() => setUpdate("hide")} className="absolute top-3 right-3 z-30 text-3xl bg-red-700 text-white px-2 py-1">*</button>
+                            <button onClick={() => setUpdate({...update, show: "hide", id: ""})} className="absolute top-3 right-3 z-30 text-xs bg-red-700 text-white px-2 py-1">close</button>
                           </div>
                       </div>
                    )
