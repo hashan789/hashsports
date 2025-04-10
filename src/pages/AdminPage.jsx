@@ -48,7 +48,7 @@ export default function AdminPage() {
 
   return (
     <div className="mx-auto flex justify-center relative min-h-screen h-auto">
-      <div className="w-2/12 min-h-screen h-auto bg-blue-500">
+      <div className="w-2/12 min-h-screen h-auto rounded-lg m-2 bg-blue-500">
         <div className="w-full h-auto relative top-20 font-semibold">
           {
             tabs.map((tab) => (
