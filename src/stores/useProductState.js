@@ -26,6 +26,23 @@ export const useProductState = create((set) => ({
 
     },
 
+    updateProduct: async (productData) => {
+        set({ loading: true })
+
+        try {
+            const res = await axios.post('/product/update', productData);
+            set((prevState) => ({
+                products : [...prevState.products, res.data],
+                loading: false
+            }));
+            return toast.success("Added product successfully!");
+        } catch (error) {
+            set({ loading: false })
+            return toast.error(error.response.data.error);
+        }
+
+    },
+
     getAllProducts: async () => {
 
         set({ loading : true });
