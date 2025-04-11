@@ -36,7 +36,7 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit}>
             <div className="">
               <label htmlFor="email" className="flex"><Mail width={20} /><span className="ml-3 text-sm">Email</span></label>
-              <input type="email" id="email" name="email" className="border block text-sm pl-2 mb-5 mt-3 w-72 h-10 rounded-lg" onChange={(e) => setFormData({...formData, email: e.target.value})} />
+              <input type="email" id="email" name="email" className="border block text-xs pl-2 mb-5 mt-3 w-72 h-10 rounded-lg" onChange={(e) => setFormData({...formData, email: e.target.value})} />
             </div>
             <div className="">
               <label htmlFor="password" className="flex"><Lock width={20}/><span className="ml-3 text-sm">Password</span></label>

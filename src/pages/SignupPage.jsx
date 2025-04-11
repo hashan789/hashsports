@@ -39,11 +39,11 @@ export default function SignupPage() {
           <form onSubmit={handleSubmit}>
             <div className="mt-5">
               <label htmlFor="name" className="mt-5 flex"><User width={20} /><span className="ml-3 text-sm">Name</span></label>
-              <input type="text" id="name" name="name" className="border block text-sm mb-5 mt-3 w-72 h-10 pl-2 rounded-lg" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} />
+              <input type="text" id="name" name="name" className="border block text-xs mb-5 mt-3 w-72 h-10 pl-2 rounded-lg" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} />
             </div>
             <div className="">
               <label htmlFor="email" className="flex"><Mail width={20} /><span className="ml-3 text-sm">Email</span></label>
-              <input type="email" id="email" name="email" className="border block text-sm mb-5 mt-3 w-72 h-10 pl-2 rounded-lg" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
+              <input type="email" id="email" name="email" className="border block text-xs mb-5 mt-3 w-72 h-10 pl-2 rounded-lg" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
             </div>
             <div className="">
               <label htmlFor="password" className="flex"><Lock width={20}/><span className="ml-3 text-sm">Password</span></label>
