@@ -2,7 +2,7 @@ import { useCartState } from '../stores/useCartState';
 
 export default function Orders() {
 
-  const columns = ["Date", "Price", "quantity", "Amount ($)"];
+  const columns = ["Date", "Time", "Price", "quantity", "Amount ($)"];
 
   const { orders } = useCartState();
 
@@ -34,13 +34,17 @@ export default function Orders() {
                   {
                       order.products?.map((product, index) => ( 
                         <tr key={index} className="">
-                          <td className="px-6 py-4 whitespace-nowrap">
-                            <div className="flex items-center">
-                              <div className="ml-4">
-                                <div className="text-sm font-medium">{order.createdAt}</div>
-                              </div>
-                            </div>
-                          </td>
+                            {
+                              order.createdAt.split("T").map((item, index) => (
+                              <td key={index} className="px-6 py-4 whitespace-nowrap">
+                                  <div className="flex items-center">
+                                    <div className="ml-4">
+                                      <div className="text-sm font-medium">{item.split(".")[0]}</div>
+                                    </div>
+                                  </div>
+                              </td>
+                              ))
+                            }
                           <td className="px-6 py-4 whitespace-nowrap">
                             <div className="text-sm">{product.price}</div>
                           </td>
