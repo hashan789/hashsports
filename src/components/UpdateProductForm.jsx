@@ -1,9 +1,9 @@
 import { Upload, ArrowUpCircleIcon } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useEffect, useState, memo } from "react"
 import { useProductState } from "../stores/useProductState"
 import { Toaster } from "react-hot-toast";
 
-export default function UpdateProductForm({ id }) {
+function UpdateProductForm({ id }) {
     const items = [ 'tshirts', 'trousers', 'shoes' ]
 
     const { product, getUpdateProduct , updateProduct } = useProductState();
@@ -32,7 +32,7 @@ export default function UpdateProductForm({ id }) {
             image: id ? product.image : '',
             category: id ? product.category : ''
         })
-    },[setNewProduct, newProduct, product, id])
+    },[product])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -146,3 +146,5 @@ export default function UpdateProductForm({ id }) {
     </div>
   )
 }
+
+export default memo(UpdateProductForm);
