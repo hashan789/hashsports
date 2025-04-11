@@ -77,6 +77,44 @@ export const createProduct = async (req, res) => {
     }
 }
 
+
+export const updateProduct = async (req, res) => {
+
+    try {
+        const { id, name, description, price, stock, image, category } = req.body;
+
+        let cloudinaryResponse = null;
+
+        if(image){
+            cloudinaryResponse = await cloudinary.uploader.upload(image, {
+                folder: "products",
+            });
+        }
+
+        const latestProduct = await Product.find({ name : name})
+
+        const product = await Product.updateOne(
+            { name: name }, 
+            {
+              $set: 
+                {
+                    name : name ? name : latestProduct.name, 
+                    description : description ? description : latestProduct.description, 
+                    price : price ? price : latestProduct.price,
+                    stock : stock ? stock : latestProduct.stock, 
+                    image: cloudinaryResponse?.secure_url ? cloudinaryResponse.secure_url : latestProduct.image, 
+                    category : category ? category : latestProduct.category
+                }
+            }
+         );
+
+        res.status(201).json({ product });
+
+    } catch (error) {
+        res.status(500).json({ message: "Internal server error", error: error.message });
+    }
+}
+
 export const getProduct = async (req,res) => {
 
     try {
