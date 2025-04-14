@@ -3,6 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Toaster } from "react-hot-toast";
 import { useUserState } from "../stores/useUserState";
+import Loader from "../components/Loader";
 
 export default function SignupPage() {
 
@@ -15,10 +16,13 @@ export default function SignupPage() {
     confirmPassword: ''
   })
 
-  const { signup} = useUserState();
+  const [load,setLoad] = useState(false);
+
+  const { signup, loading } = useUserState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setLoad(loading);
     console.log(formData);
     signup(formData);
   }
@@ -54,7 +58,7 @@ export default function SignupPage() {
               <input type="password" id="confirmPassword" name="confirmPassword" className="border block mb-5 mt-3 pl-2 w-72 h-10 rounded-lg" value={formData.confirmPassword} onChange={(e) => setFormData({...formData, confirmPassword: e.target.value})} />
             </div>
             <div className="text-center">
-              <button type="submit" className="text-center text-sm w-72 h-10 rounded-lg bg-blue-500 text-white flex justify-center items-center gap-3"><Send width={20} /><span>Register</span></button>
+              <button type="submit" className="text-center text-sm w-72 h-10 rounded-lg bg-blue-500 text-white flex justify-center items-center gap-3">{ (load && loading) ? <Loader /> : (<><Send width={20} /><span>Register</span></>) }</button>
             </div>
           </form>
           </div>

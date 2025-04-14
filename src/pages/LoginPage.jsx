@@ -1,23 +1,29 @@
 import { Lock, Mail, Send } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useUserState } from "../stores/useUserState";
+import Loader from "../components/Loader";
 
 export default function LoginPage() {
 
-  // const loading = true;
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
 
-  const [ formData, setFormData ] = useState({
-    email: '',
-    password: ''
-  })
+  const [load,setLoad] = useState(false);
 
-  const { login } = useUserState();
+  const { login, loading } = useUserState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    login( formData );
+    setLoad(loading);
+    console.log({
+      email : emailRef.current.value,
+      password : passwordRef.current.value
+    });
+    login( {
+      email : emailRef.current.value,
+      password : passwordRef.current.value
+    } );
   }
 
   return (
@@ -36,14 +42,14 @@ export default function LoginPage() {
           <form onSubmit={handleSubmit}>
             <div className="">
               <label htmlFor="email" className="flex"><Mail width={20} /><span className="ml-3 text-sm">Email</span></label>
-              <input type="email" id="email" name="email" className="border block text-xs pl-2 mb-5 mt-3 w-72 h-10 rounded-lg" onChange={(e) => setFormData({...formData, email: e.target.value})} />
+              <input type="email" id="email" name="email" ref={emailRef} className="border block text-xs pl-2 mb-5 mt-3 w-72 h-10 rounded-lg"/>
             </div>
             <div className="">
               <label htmlFor="password" className="flex"><Lock width={20}/><span className="ml-3 text-sm">Password</span></label>
-              <input type="password" id="password" name="password" className="border block pl-2 mb-5 mt-3 w-72 h-10 rounded-lg" onChange={(e) => setFormData({...formData, password: e.target.value})} />
+              <input type="password" id="password" name="password" ref={passwordRef} className="border block pl-2 mb-5 mt-3 w-72 h-10 rounded-lg"/>
             </div>
             <div className="text-center">
-              <button type="submit" className="text-center text-sm w-72 h-10 rounded-lg bg-blue-500 text-white flex justify-center items-center gap-3"><Send width={20} /><span>Register</span></button>
+              <button type="submit" className="text-center text-sm w-72 h-10 rounded-lg bg-blue-500 text-white flex justify-center items-center gap-3">{ (load && loading) ? <Loader /> : (<><Send width={20} /><span>Log in</span></>) }</button>
             </div>
           </form>
           </div>
