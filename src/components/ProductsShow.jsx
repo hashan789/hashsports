@@ -24,6 +24,7 @@ export default function ProductsShow() {
   return (
     <div className='flex justify-center items-center p-10 mb-10'>
         <div className="top-12 relative">
+         <div className="w-52 h-52 rounded-full bg-purple-700 absolute -top-40 right-10 -z-10 bg-opacity-15"></div>
             <h1 className="lg:text-4xl max-sm:text-2xl text-center font-semibold">Explore New Categories</h1>
             <h1 className="lg:text-lg max-sm:text-sm text-center mt-8">Discover the latest additions to our collection! </h1>
             <div className="mt-12 flex justify-center items-center">
